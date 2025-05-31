@@ -5,7 +5,7 @@ import { Issue } from "./Issue";
 import { Pull_Request } from "./Pull_Request";
 
 export default function Navigation() {
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState("codes");
   return (
     <div>
       <div className="navHeader">
@@ -28,40 +28,49 @@ export default function Navigation() {
           <button onClick={() => setActiveTab("codes")}>
             <img src="/src/assets/images/icons8-arrow-24.png" />
             Code
+            {activeTab === "codes" && <div className="active_Navline" />}
           </button>
-          <button onClick={() => setActiveTab("Action")}>
+          <button onClick={() => setActiveTab("Issue")}>
             <img src="/src/assets/images/icons8-circularDot-16.png" />
             Issues
+            {activeTab === "Issue" && <div className="active_Navline" />}
           </button>
           <button onClick={() => setActiveTab("Pull_Request")}>
             <img src="/src/assets/images/icons8-pull-request-50.png" />
             Pull requests
+            {activeTab === "Pull_Request" && <div className="active_Navline" />}
           </button>
 
-          <button onClick={() => setActiveTab("Issue")}>
+          <button onClick={() => setActiveTab("Action")}>
             <img src="/src/assets/images/actionArrow.png" />
-            Actions
+            Action
+            {activeTab === "Action" && <div className="active_Navline" />}
           </button>
-          <button>
+          <button onClick={() => setActiveTab("Projects")}>
             <img src="/src/assets/images/Projects.png" />
             Projects
+            {activeTab === "Projects" && <div className="active_Navline" />}
           </button>
-          <button>
+          <button onClick={() => setActiveTab("Insights")}>
             <img src="/src/assets/images/insights.png" />
             Insights
+            {activeTab === "Insights" && <div className="active_Navline" />}
           </button>
-          <button>
+          <button onClick={() => setActiveTab("Security")}>
             <img src="/src/assets/images/security.png" />
             Security
+            {activeTab === "Security" && <div className="active_Navline" />}
           </button>
         </div>
         <div className="nav_line" />
       </div>
-      {activeTab === "codes" && <Codes />}
-      {activeTab === "Action" && <Action />}
-      {activeTab === "Issue" && <Issue />}
+      <div className="content">
+        {activeTab === "codes" && <Codes />}
+        {activeTab === "Action" && <Action />}
+        {activeTab === "Issue" && <Issue />}
 
-      {activeTab === "Pull_Request" && <Pull_Request />}
+        {activeTab === "Pull_Request" && <Pull_Request />}
+      </div>
     </div>
   );
 }
